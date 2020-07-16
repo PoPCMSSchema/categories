@@ -1,12 +1,12 @@
 {
-    "name": "getpop/tags",
+    "name": "getpop/categories",
     "type": "library",
-    "description": "Adds support for tags",
+    "description": "Adds support for categories",
     "keywords": [
         "PoP",
-        "tags"
+        "categories"
     ],
-    "homepage": "https://github.com/PoPSchema/tags",
+    "homepage": "https://github.com/PoPSchema/categories",
     "license": "MIT",
     "authors": [
         {
@@ -20,7 +20,7 @@
     "require": {
         "php" : "~7.1",
         "getpop/taxonomies": "dev-master",
-        "getpop/migrate-tags": "dev-master"
+        "getpop/migrate-categories": "dev-master"
     },
     "require-dev": {
         "getpop/api": "dev-master",
@@ -35,12 +35,12 @@
     },
     "autoload": {
         "psr-4": {
-            "PoP\\Tags\\": "src"
+            "PoP\\Categories\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "PoP\\Tags\\": "tests"
+            "PoP\\Categories\\": "tests"
         }
     },
     "scripts": {

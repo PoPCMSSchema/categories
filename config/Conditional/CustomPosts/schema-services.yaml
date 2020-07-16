@@ -1,4 +1,4 @@
 services:
-    PoP\Tags\Conditional\CustomPosts\FieldResolvers\:
+    PoP\Categories\Conditional\CustomPosts\FieldResolvers\:
         resource: '../../../src/Conditional/CustomPosts/FieldResolvers/*'
         public: true

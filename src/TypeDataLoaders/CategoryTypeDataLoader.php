@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace PoP\Tags\TypeDataLoaders;
+namespace PoP\Categories\TypeDataLoaders;
 
 use PoP\LooseContracts\Facades\NameResolverFacade;
 use PoP\ComponentModel\TypeDataLoaders\AbstractTypeQueryableDataLoader;
 
-class TagTypeDataLoader extends AbstractTypeQueryableDataLoader
+class CategoryTypeDataLoader extends AbstractTypeQueryableDataLoader
 {
     public function getFilterDataloadingModule(): ?array
     {
-        return [\PoP_Tags_Module_Processor_FieldDataloads::class, \PoP_Tags_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_TAGLIST];
+        return [\PoP_Categories_Module_Processor_FieldDataloads::class, \PoP_Categories_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_CATEGORYLIST];
     }
 
     public function getObjects(array $ids): array
@@ -19,8 +19,8 @@ class TagTypeDataLoader extends AbstractTypeQueryableDataLoader
         $query = array(
             'include' => $ids
         );
-        $tagapi = \PoP\Tags\FunctionAPIFactory::getInstance();
-        return $tagapi->getTags($query);
+        $categoryapi = \PoP\Categories\FunctionAPIFactory::getInstance();
+        return $categoryapi->getCategories($query);
     }
 
     public function getDataFromIdsQuery(array $ids): array
@@ -33,7 +33,7 @@ class TagTypeDataLoader extends AbstractTypeQueryableDataLoader
 
     protected function getOrderbyDefault()
     {
-        return NameResolverFacade::getInstance()->getName('popcms:dbcolumn:orderby:tags:count');
+        return NameResolverFacade::getInstance()->getName('popcms:dbcolumn:orderby:categories:count');
     }
 
     protected function getOrderDefault()
@@ -43,8 +43,8 @@ class TagTypeDataLoader extends AbstractTypeQueryableDataLoader
 
     public function executeQuery($query, array $options = [])
     {
-        $tagapi = \PoP\Tags\FunctionAPIFactory::getInstance();
-        return $tagapi->getTags($query, $options);
+        $categoryapi = \PoP\Categories\FunctionAPIFactory::getInstance();
+        return $categoryapi->getCategories($query, $options);
     }
 
     public function executeQueryIds($query): array

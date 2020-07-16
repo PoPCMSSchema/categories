@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace PoP\Tags\Conditional\CustomPosts;
+namespace PoP\Categories\Conditional\CustomPosts;
 
-use PoP\Tags\Component;
+use PoP\Categories\Component;
 use PoP\Root\Component\YAMLServicesTrait;
 use PoP\ComponentModel\Container\ContainerBuilderUtils;
 
@@ -25,7 +25,7 @@ class ConditionalComponent
         if (class_exists('\PoP\RESTAPI\Component')
             && !in_array(\PoP\RESTAPI\Component::class, $skipSchemaComponentClasses)
         ) {
-            \PoP\Tags\Conditional\CustomPosts\Conditional\RESTAPI\ConditionalComponent::initialize(
+            \PoP\Categories\Conditional\CustomPosts\Conditional\RESTAPI\ConditionalComponent::initialize(
                 $configuration,
                 $skipSchema
             );
@@ -43,7 +43,7 @@ class ConditionalComponent
 
         // Initialize all conditional components
         if (class_exists('\PoP\RESTAPI\Component')) {
-            \PoP\Tags\Conditional\CustomPosts\Conditional\RESTAPI\ConditionalComponent::beforeBoot();
+            \PoP\Categories\Conditional\CustomPosts\Conditional\RESTAPI\ConditionalComponent::beforeBoot();
         }
     }
 }

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace PoP\Tags\Conditional\CustomPosts\Conditional\RESTAPI;
+namespace PoP\Categories\Conditional\CustomPosts\Conditional\RESTAPI;
 
-use PoP\Tags\Component;
+use PoP\Categories\Component;
 use PoP\Root\Component\YAMLServicesTrait;
 use PoP\ComponentModel\Container\ContainerBuilderUtils;
 

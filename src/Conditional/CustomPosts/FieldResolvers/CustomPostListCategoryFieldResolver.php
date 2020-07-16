@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace PoP\Tags\Conditional\CustomPosts\FieldResolvers;
+namespace PoP\Categories\Conditional\CustomPosts\FieldResolvers;
 
-use PoP\Tags\TypeResolvers\TagTypeResolver;
+use PoP\Categories\TypeResolvers\CategoryTypeResolver;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\CustomPosts\FieldResolvers\AbstractCustomPostListFieldResolver;
 
-class CustomPostListTagFieldResolver extends AbstractCustomPostListFieldResolver
+class CustomPostListCategoryFieldResolver extends AbstractCustomPostListFieldResolver
 {
     public static function getClassesToAttachTo(): array
     {
-        return array(TagTypeResolver::class);
+        return array(CategoryTypeResolver::class);
     }
 
     public function getSchemaFieldDescription(TypeResolverInterface $typeResolver, string $fieldName): ?string
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-            'customPosts' => $translationAPI->__('Custom posts which contain this tag', 'pop-tags'),
-            'customPostCount' => $translationAPI->__('Number of custom posts which contain this tag', 'pop-tags'),
+            'customPosts' => $translationAPI->__('Custom posts which contain this category', 'pop-categories'),
+            'customPostCount' => $translationAPI->__('Number of custom posts which contain this category', 'pop-categories'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
@@ -30,11 +30,11 @@ class CustomPostListTagFieldResolver extends AbstractCustomPostListFieldResolver
     {
         $query = parent::getQuery($typeResolver, $resultItem, $fieldName, $fieldArgs);
 
-        $tag = $resultItem;
+        $category = $resultItem;
         switch ($fieldName) {
             case 'customPosts':
             case 'customPostCount':
-                $query['tag-ids'] = [$typeResolver->getID($tag)];
+                $query['category-ids'] = [$typeResolver->getID($category)];
                 break;
         }
 

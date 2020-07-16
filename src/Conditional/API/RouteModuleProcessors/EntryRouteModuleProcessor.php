@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace PoP\Tags\Conditional\API\RouteModuleProcessors;
+namespace PoP\Categories\Conditional\API\RouteModuleProcessors;
 
 use PoP\ModuleRouting\AbstractEntryRouteModuleProcessor;
 use PoP\Routing\RouteNatures;
-use PoP\Tags\Routing\RouteNatures as TagRouteNatures;
+use PoP\Categories\Routing\RouteNatures as CategoryRouteNatures;
 
 class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
 {
     public function getModulesVarsPropertiesByNature()
     {
         $ret = array();
-        $ret[TagRouteNatures::TAG][] = [
-            'module' => [\PoP_Tags_Module_Processor_FieldDataloads::class, \PoP_Tags_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_TAG],
+        $ret[CategoryRouteNatures::CATEGORY][] = [
+            'module' => [\PoP_Categories_Module_Processor_FieldDataloads::class, \PoP_Categories_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_CATEGORY],
             'conditions' => [
                 'scheme' => POP_SCHEME_API,
             ],
@@ -26,7 +26,7 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
     {
         $ret = array();
         $routemodules = array(
-            POP_TAGS_ROUTE_TAGS => [\PoP_Tags_Module_Processor_FieldDataloads::class, \PoP_Tags_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_TAGLIST],
+            POP_CATEGORIES_ROUTE_CATEGORIES => [\PoP_Categories_Module_Processor_FieldDataloads::class, \PoP_Categories_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_CATEGORYLIST],
         );
         foreach ($routemodules as $route => $module) {
             $ret[RouteNatures::STANDARD][$route][] = [
@@ -38,10 +38,10 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
         }
         // Commented until creating route POP_CUSTOMPOSTS_ROUTE_CUSTOMPOSTS
         // $routemodules = array(
-        //     POP_CUSTOMPOSTS_ROUTE_CUSTOMPOSTS => [\PoP_Tags_Module_Processor_FieldDataloads::class, \PoP_Tags_Posts_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_TAGPOSTLIST],
+        //     POP_CUSTOMPOSTS_ROUTE_CUSTOMPOSTS => [\PoP_Categories_Module_Processor_FieldDataloads::class, \PoP_Categories_Posts_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_CATEGORYPOSTLIST],
         // );
         // foreach ($routemodules as $route => $module) {
-        //     $ret[TagRouteNatures::TAG][$route][] = [
+        //     $ret[CategoryRouteNatures::CATEGORY][$route][] = [
         //         'module' => $module,
         //         'conditions' => [
         //             'scheme' => POP_SCHEME_API,

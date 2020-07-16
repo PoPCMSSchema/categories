@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace PoP\Tags\TypeResolvers;
+namespace PoP\Categories\TypeResolvers;
 
 use PoP\Translation\Facades\TranslationAPIFacade;
-use PoP\Tags\TypeDataLoaders\TagTypeDataLoader;
+use PoP\Categories\TypeDataLoaders\CategoryTypeDataLoader;
 use PoP\ComponentModel\TypeResolvers\AbstractTypeResolver;
 
-class TagTypeResolver extends AbstractTypeResolver
+class CategoryTypeResolver extends AbstractTypeResolver
 {
-    public const NAME = 'Tag';
+    public const NAME = 'Category';
 
     public function getTypeName(): string
     {
@@ -20,18 +20,18 @@ class TagTypeResolver extends AbstractTypeResolver
     public function getSchemaTypeDescription(): ?string
     {
         $translationAPI = TranslationAPIFacade::getInstance();
-        return $translationAPI->__('Representation of a tag, added to a post', 'tags');
+        return $translationAPI->__('Representation of a category, added to a post', 'categories');
     }
 
     public function getID($resultItem)
     {
-        $cmstagsresolver = \PoP\Tags\ObjectPropertyResolverFactory::getInstance();
-        $tag = $resultItem;
-        return $cmstagsresolver->getTagID($tag);
+        $cmscategoriesresolver = \PoP\Categories\ObjectPropertyResolverFactory::getInstance();
+        $category = $resultItem;
+        return $cmscategoriesresolver->getCategoryID($category);
     }
 
     public function getTypeDataLoaderClass(): string
     {
-        return TagTypeDataLoader::class;
+        return CategoryTypeDataLoader::class;
     }
 }

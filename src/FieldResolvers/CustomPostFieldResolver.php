@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\Tags\FieldResolvers;
+namespace PoP\Categories\FieldResolvers;
 
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\ComponentModel\Schema\TypeCastingHelpers;
@@ -57,21 +57,21 @@ class CustomPostFieldResolver extends AbstractDBDataFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-            'categories' => $translationAPI->__('Categories to which this post was added', 'pop-tags'),
-            'mainCategory' => $translationAPI->__('Main category to which this post was added', 'pop-tags'),
-            'catName' => $translationAPI->__('Name of the main category to which this post was added', 'pop-tags'),
-            'catSlugs' => $translationAPI->__('Slugs of the categories to which this post was added', 'pop-tags'),
+            'categories' => $translationAPI->__('Categories to which this post was added', 'pop-categories'),
+            'mainCategory' => $translationAPI->__('Main category to which this post was added', 'pop-categories'),
+            'catName' => $translationAPI->__('Name of the main category to which this post was added', 'pop-categories'),
+            'catSlugs' => $translationAPI->__('Slugs of the categories to which this post was added', 'pop-categories'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
 
     public function resolveValue(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = [], ?array $variables = null, ?array $expressions = null, array $options = [])
     {
-        $tagapi = \PoP\Tags\FunctionAPIFactory::getInstance();
+        $categoryapi = \PoP\Categories\FunctionAPIFactory::getInstance();
         $post = $resultItem;
         switch ($fieldName) {
             case 'categories':
-                return $tagapi->getPostCategories($typeResolver->getID($post), ['return-type' => POP_RETURNTYPE_IDS]);
+                return $categoryapi->getPostCategories($typeResolver->getID($post), ['return-type' => POP_RETURNTYPE_IDS]);
 
             case 'mainCategory':
                 // Simply return the first category
@@ -82,12 +82,12 @@ class CustomPostFieldResolver extends AbstractDBDataFieldResolver
 
             case 'catName':
                 if ($cat = $typeResolver->resolveValue($post, 'mainCategory', $variables, $expressions, $options)) {
-                    return $tagapi->getCategoryName($cat);
+                    return $categoryapi->getCategoryName($cat);
                 }
                 return null;
 
             case 'catSlugs':
-                return $tagapi->getPostCategories($typeResolver->getID($post), ['return-type' => POP_RETURNTYPE_SLUGS]);
+                return $categoryapi->getPostCategories($typeResolver->getID($post), ['return-type' => POP_RETURNTYPE_SLUGS]);
         }
 
         return parent::resolveValue($typeResolver, $resultItem, $fieldName, $fieldArgs, $variables, $expressions, $options);

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace PoP\Tags\Facades;
+namespace PoP\Categories\Facades;
 
-use PoP\Tags\TypeAPIs\TagTypeAPIInterface;
+use PoP\Categories\TypeAPIs\CategoryTypeAPIInterface;
 use PoP\Root\Container\ContainerBuilderFactory;
 
-class TagTypeAPIFacade
+class CategoryTypeAPIFacade
 {
-    public static function getInstance(): TagTypeAPIInterface
+    public static function getInstance(): CategoryTypeAPIInterface
     {
-        return ContainerBuilderFactory::getInstance()->get('tag_type_api');
+        return ContainerBuilderFactory::getInstance()->get('category_type_api');
     }
 }

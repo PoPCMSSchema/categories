@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace PoP\Tags\FieldResolvers;
+namespace PoP\Categories\FieldResolvers;
 
 use PoP\Engine\TypeResolvers\RootTypeResolver;
-use PoP\Tags\FieldResolvers\AbstractTagFieldResolver;
+use PoP\Categories\FieldResolvers\AbstractCategoryFieldResolver;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\Tags\TypeResolvers\TagTypeResolver;
+use PoP\Categories\TypeResolvers\CategoryTypeResolver;
 
-class RootTagFieldResolver extends AbstractTagFieldResolver
+class RootCategoryFieldResolver extends AbstractCategoryFieldResolver
 {
     public static function getClassesToAttachTo(): array
     {
@@ -22,8 +22,8 @@ class RootTagFieldResolver extends AbstractTagFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-            'tag' => $translationAPI->__('Tag with a specific ID', 'pop-tags'),
-            'tags' => $translationAPI->__('Tags in the current site', 'pop-tags'),
+            'category' => $translationAPI->__('Category with a specific ID', 'pop-categories'),
+            'categories' => $translationAPI->__('Categories in the current site', 'pop-categories'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
@@ -33,7 +33,7 @@ class RootTagFieldResolver extends AbstractTagFieldResolver
         return array_merge(
             parent::getFieldNamesToResolve(),
             [
-                'tag',
+                'category',
             ]
         );
     }
@@ -41,7 +41,7 @@ class RootTagFieldResolver extends AbstractTagFieldResolver
     public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
     {
         $types = [
-            'tag' => SchemaDefinition::TYPE_ID,
+            'category' => SchemaDefinition::TYPE_ID,
         ];
         return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
     }
@@ -51,14 +51,14 @@ class RootTagFieldResolver extends AbstractTagFieldResolver
         $schemaFieldArgs = parent::getSchemaFieldArgs($typeResolver, $fieldName);
         $translationAPI = TranslationAPIFacade::getInstance();
         switch ($fieldName) {
-            case 'tag':
+            case 'category':
                 return array_merge(
                     $schemaFieldArgs,
                     [
                         [
                             SchemaDefinition::ARGNAME_NAME => 'id',
                             SchemaDefinition::ARGNAME_TYPE => SchemaDefinition::TYPE_ID,
-                            SchemaDefinition::ARGNAME_DESCRIPTION => $translationAPI->__('The tag ID', 'pop-tags'),
+                            SchemaDefinition::ARGNAME_DESCRIPTION => $translationAPI->__('The category ID', 'pop-categories'),
                             SchemaDefinition::ARGNAME_MANDATORY => true,
                         ],
                     ]
@@ -69,17 +69,17 @@ class RootTagFieldResolver extends AbstractTagFieldResolver
 
     public function resolveValue(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = [], ?array $variables = null, ?array $expressions = null, array $options = [])
     {
-        $cmstagsapi = \PoP\Tags\FunctionAPIFactory::getInstance();
+        $cmscategoriesapi = \PoP\Categories\FunctionAPIFactory::getInstance();
         switch ($fieldName) {
-            case 'tag':
+            case 'category':
                 $query = [
                     'include' => [$fieldArgs['id']],
                 ];
                 $options = [
                     'return-type' => POP_RETURNTYPE_IDS,
                 ];
-                if ($tags = $cmstagsapi->getTags($query, $options)) {
-                    return $tags[0];
+                if ($categories = $cmscategoriesapi->getCategories($query, $options)) {
+                    return $categories[0];
                 }
                 return null;
         }
@@ -90,8 +90,8 @@ class RootTagFieldResolver extends AbstractTagFieldResolver
     public function resolveFieldTypeResolverClass(TypeResolverInterface $typeResolver, string $fieldName, array $fieldArgs = []): ?string
     {
         switch ($fieldName) {
-            case 'tag':
-                return TagTypeResolver::class;
+            case 'category':
+                return CategoryTypeResolver::class;
         }
 
         return parent::resolveFieldTypeResolverClass($typeResolver, $fieldName, $fieldArgs);

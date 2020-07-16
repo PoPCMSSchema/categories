@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace PoP\Tags;
+namespace PoP\Categories;
 
 use PoP\Root\Component\AbstractComponent;
 use PoP\Root\Component\YAMLServicesTrait;
-use PoP\Tags\Config\ServiceConfiguration;
+use PoP\Categories\Config\ServiceConfiguration;
 use PoP\ComponentModel\Container\ContainerBuilderUtils;
 
 /**
@@ -41,7 +41,7 @@ class Component extends AbstractComponent
     public static function getDependedMigrationPlugins(): array
     {
         return [
-            'migrate-tags',
+            'migrate-categories',
         ];
     }
 
@@ -61,7 +61,7 @@ class Component extends AbstractComponent
         ServiceConfiguration::initialize();
 
         if (!in_array(\PoP\CustomPosts\Component::class, $skipSchemaComponentClasses)) {
-            \PoP\Tags\Conditional\CustomPosts\ConditionalComponent::initialize(
+            \PoP\Categories\Conditional\CustomPosts\ConditionalComponent::initialize(
                 $configuration,
                 $skipSchema
             );
@@ -83,7 +83,7 @@ class Component extends AbstractComponent
 
         // If $skipSchema for `Condition` is `true`, then services are not registered
         if (!empty(ContainerBuilderUtils::getServiceClassesUnderNamespace(__NAMESPACE__ . '\\Conditional\\CustomPosts\\FieldResolvers'))) {
-            \PoP\Tags\Conditional\CustomPosts\ConditionalComponent::beforeBoot();
+            \PoP\Categories\Conditional\CustomPosts\ConditionalComponent::beforeBoot();
         }
     }
 }

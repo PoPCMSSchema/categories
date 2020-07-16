@@ -2,10 +2,10 @@ parameters:
     version: '0.1.0'
 
 services:
-    PoP\Tags\Conditional\API\RouteModuleProcessors\:
+    PoP\Categories\Conditional\API\RouteModuleProcessors\:
         resource: '../src/Conditional/API/RouteModuleProcessors/*'
         public: true
 
-    PoP\Tags\Conditional\RESTAPI\RouteModuleProcessors\:
+    PoP\Categories\Conditional\RESTAPI\RouteModuleProcessors\:
         resource: '../src/Conditional/RESTAPI/RouteModuleProcessors/*'
         public: true

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace PoP\Tags\Conditional\RESTAPI\RouteModuleProcessors;
+namespace PoP\Categories\Conditional\RESTAPI\RouteModuleProcessors;
 
 use PoP\ModuleRouting\AbstractEntryRouteModuleProcessor;
 use PoP\ComponentModel\State\ApplicationState;
 use PoP\Hooks\Facades\HooksAPIFacade;
 use PoP\API\Facades\FieldQueryConvertorFacade;
 use PoP\Routing\RouteNatures;
-use PoP\Tags\Routing\RouteNatures as TagRouteNatures;
+use PoP\Categories\Routing\RouteNatures as CategoryRouteNatures;
 use PoP\RESTAPI\DataStructureFormatters\RESTDataStructureFormatter;
 
 // use PoP\CustomPosts\Conditional\RESTAPI\RouteModuleProcessors\EntryRouteModuleProcessorHelpers;
@@ -46,10 +46,10 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
     {
         $ret = array();
         $vars = ApplicationState::getVars();
-        $ret[TagRouteNatures::TAG][] = [
+        $ret[CategoryRouteNatures::CATEGORY][] = [
             'module' => [
-                \PoP_Tags_Module_Processor_FieldDataloads::class,
-                \PoP_Tags_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_TAG,
+                \PoP_Categories_Module_Processor_FieldDataloads::class,
+                \PoP_Categories_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_CATEGORY,
                 [
                     'fields' => isset($vars['query']) ?
                         $vars['query'] :
@@ -70,9 +70,9 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
         $ret = array();
         $vars = ApplicationState::getVars();
         $routemodules = array(
-            POP_TAGS_ROUTE_TAGS => [
-                \PoP_Tags_Module_Processor_FieldDataloads::class,
-                \PoP_Tags_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_TAGLIST,
+            POP_CATEGORIES_ROUTE_CATEGORIES => [
+                \PoP_Categories_Module_Processor_FieldDataloads::class,
+                \PoP_Categories_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_CATEGORYLIST,
                 [
                     'fields' => isset($vars['query']) ?
                         $vars['query'] :
@@ -92,8 +92,8 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
         // Commented until creating route POP_CUSTOMPOSTS_ROUTE_CUSTOMPOSTS
         // $routemodules = array(
         //     POP_CUSTOMPOSTS_ROUTE_CUSTOMPOSTS => [
-        //         \PoP_Tags_Module_Processor_FieldDataloads::class,
-        //         \PoP_Tags_Posts_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_TAGPOSTLIST,
+        //         \PoP_Categories_Module_Processor_FieldDataloads::class,
+        //         \PoP_Categories_Posts_Module_Processor_FieldDataloads::MODULE_DATALOAD_RELATIONALFIELDS_CATEGORYPOSTLIST,
         //         [
         //             'fields' => isset($vars['query']) ?
         //                 $vars['query'] :
@@ -102,7 +102,7 @@ class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
         //         ],
         // );
         // foreach ($routemodules as $route => $module) {
-        //     $ret[TagRouteNatures::TAG][$route][] = [
+        //     $ret[CategoryRouteNatures::CATEGORY][$route][] = [
         //         'module' => $module,
         //         'conditions' => [
         //             'scheme' => POP_SCHEME_API,

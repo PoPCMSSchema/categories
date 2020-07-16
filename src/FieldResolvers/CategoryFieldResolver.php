@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace PoP\Tags\FieldResolvers;
+namespace PoP\Categories\FieldResolvers;
 
 use PoP\ComponentModel\Schema\SchemaDefinition;
-use PoP\Tags\TypeResolvers\TagTypeResolver;
+use PoP\Categories\TypeResolvers\CategoryTypeResolver;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
 use PoP\QueriedObject\FieldInterfaces\QueryableObjectFieldInterfaceResolver;
 
-class TagFieldResolver extends AbstractDBDataFieldResolver
+class CategoryFieldResolver extends AbstractDBDataFieldResolver
 {
     public static function getClassesToAttachTo(): array
     {
-        return array(TagTypeResolver::class);
+        return array(CategoryTypeResolver::class);
     }
 
     public static function getImplementedInterfaceClasses(): array
@@ -54,39 +54,39 @@ class TagFieldResolver extends AbstractDBDataFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-            'url' => $translationAPI->__('Tag URL', 'pop-tags'),
-            'name' => $translationAPI->__('Tag', 'pop-tags'),
-            'slug' => $translationAPI->__('Tag slug', 'pop-tags'),
-            'description' => $translationAPI->__('Tag description', 'pop-tags'),
-            'parent' => $translationAPI->__('Parent category (if this category is a child of another one)', 'pop-tags'),
-            'count' => $translationAPI->__('Number of custom posts containing this tag', 'pop-tags'),
+            'url' => $translationAPI->__('Category URL', 'pop-categories'),
+            'name' => $translationAPI->__('Category', 'pop-categories'),
+            'slug' => $translationAPI->__('Category slug', 'pop-categories'),
+            'description' => $translationAPI->__('Category description', 'pop-categories'),
+            'parent' => $translationAPI->__('Parent category (if this category is a child of another one)', 'pop-categories'),
+            'count' => $translationAPI->__('Number of custom posts containing this category', 'pop-categories'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
 
     public function resolveValue(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = [], ?array $variables = null, ?array $expressions = null, array $options = [])
     {
-        $cmstagsresolver = \PoP\Tags\ObjectPropertyResolverFactory::getInstance();
-        $tagapi = \PoP\Tags\FunctionAPIFactory::getInstance();
-        $tag = $resultItem;
+        $cmscategoriesresolver = \PoP\Categories\ObjectPropertyResolverFactory::getInstance();
+        $categoryapi = \PoP\Categories\FunctionAPIFactory::getInstance();
+        $category = $resultItem;
         switch ($fieldName) {
             case 'url':
-                return $tagapi->getTagLink($typeResolver->getID($tag));
+                return $categoryapi->getCategoryLink($typeResolver->getID($category));
 
             case 'name':
-                return $cmstagsresolver->getTagName($tag);
+                return $cmscategoriesresolver->getCategoryName($category);
 
             case 'slug':
-                return $cmstagsresolver->getTagSlug($tag);
+                return $cmscategoriesresolver->getCategorySlug($category);
 
             case 'description':
-                return $cmstagsresolver->getTagDescription($tag);
+                return $cmscategoriesresolver->getCategoryDescription($category);
 
             case 'parent':
-                return $cmstagsresolver->getTagParent($tag);
+                return $cmscategoriesresolver->getCategoryParent($category);
 
             case 'count':
-                return $cmstagsresolver->getTagCount($tag);
+                return $cmscategoriesresolver->getCategoryCount($category);
         }
 
         return parent::resolveValue($typeResolver, $resultItem, $fieldName, $fieldArgs, $variables, $expressions, $options);
@@ -96,7 +96,7 @@ class TagFieldResolver extends AbstractDBDataFieldResolver
     {
         switch ($fieldName) {
             case 'parent':
-                return TagTypeResolver::class;
+                return CategoryTypeResolver::class;
         }
 
         return parent::resolveFieldTypeResolverClass($typeResolver, $fieldName, $fieldArgs);
