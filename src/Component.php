@@ -60,8 +60,8 @@ class Component extends AbstractComponent
         self::maybeInitYAMLSchemaServices(self::$COMPONENT_DIR, $skipSchema);
         ServiceConfiguration::initialize();
 
-        if (!in_array(\PoP\CustomPosts\Component::class, $skipSchemaComponentClasses)) {
-            \PoP\Categories\Conditional\CustomPosts\ConditionalComponent::initialize(
+        if (!in_array(\PoP\RESTAPI\Component::class, $skipSchemaComponentClasses)) {
+            \PoP\Categories\Conditional\RESTAPI\ConditionalComponent::initialize(
                 $configuration,
                 $skipSchema
             );
@@ -82,8 +82,8 @@ class Component extends AbstractComponent
         ContainerBuilderUtils::attachFieldResolversFromNamespace(__NAMESPACE__ . '\\FieldResolvers');
 
         // If $skipSchema for `Condition` is `true`, then services are not registered
-        if (!empty(ContainerBuilderUtils::getServiceClassesUnderNamespace(__NAMESPACE__ . '\\Conditional\\CustomPosts\\FieldResolvers'))) {
-            \PoP\Categories\Conditional\CustomPosts\ConditionalComponent::beforeBoot();
+        if (!empty(ContainerBuilderUtils::getServiceClassesUnderNamespace(__NAMESPACE__ . '\\Conditional\\RESTAPI\\Hooks'))) {
+            \PoP\Categories\Conditional\RESTAPI\ConditionalComponent::beforeBoot();
         }
     }
 }
