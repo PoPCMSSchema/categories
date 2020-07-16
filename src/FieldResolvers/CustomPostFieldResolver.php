@@ -71,7 +71,7 @@ class CustomPostFieldResolver extends AbstractDBDataFieldResolver
         $post = $resultItem;
         switch ($fieldName) {
             case 'categories':
-                return $categoryapi->getPostCategories($typeResolver->getID($post), ['return-type' => POP_RETURNTYPE_IDS]);
+                return $categoryapi->getCustomPostCategories($typeResolver->getID($post), ['return-type' => POP_RETURNTYPE_IDS]);
 
             case 'mainCategory':
                 // Simply return the first category
@@ -87,7 +87,7 @@ class CustomPostFieldResolver extends AbstractDBDataFieldResolver
                 return null;
 
             case 'catSlugs':
-                return $categoryapi->getPostCategories($typeResolver->getID($post), ['return-type' => POP_RETURNTYPE_SLUGS]);
+                return $categoryapi->getCustomPostCategories($typeResolver->getID($post), ['return-type' => POP_RETURNTYPE_SLUGS]);
         }
 
         return parent::resolveValue($typeResolver, $resultItem, $fieldName, $fieldArgs, $variables, $expressions, $options);

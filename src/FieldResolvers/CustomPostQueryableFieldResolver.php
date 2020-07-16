@@ -107,7 +107,7 @@ class CustomPostQueryableFieldResolver extends AbstractQueryableFieldResolver
                     'return-type' => POP_RETURNTYPE_IDS,
                 ];
                 $this->addFilterDataloadQueryArgs($options, $typeResolver, $fieldName, $fieldArgs);
-                return $categoryapi->getPostCategories(
+                return $categoryapi->getCustomPostCategories(
                     $typeResolver->getID($post),
                     $query,
                     $options
@@ -115,7 +115,7 @@ class CustomPostQueryableFieldResolver extends AbstractQueryableFieldResolver
             case 'categoryCount':
                 $options = [];
                 $this->addFilterDataloadQueryArgs($options, $typeResolver, $fieldName, $fieldArgs);
-                return $categoryapi->getPostCategoryCount(
+                return $categoryapi->getCustomPostCategoryCount(
                     $typeResolver->getID($post),
                     [],
                     $options
