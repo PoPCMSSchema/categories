@@ -12,8 +12,6 @@ use PoP\Routing\RouteNatures;
 use PoP\Categories\Routing\RouteNatures as CategoryRouteNatures;
 use PoP\RESTAPI\DataStructureFormatters\RESTDataStructureFormatter;
 
-// use PoP\CustomPosts\Conditional\RESTAPI\RouteModuleProcessors\EntryRouteModuleProcessorHelpers;
-
 class EntryRouteModuleProcessor extends AbstractEntryRouteModuleProcessor
 {
     public const HOOK_REST_FIELDS = __CLASS__ . ':RESTFields';
