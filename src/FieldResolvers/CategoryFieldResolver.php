@@ -9,7 +9,7 @@ use PoP\Categories\TypeResolvers\CategoryTypeResolver;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
-use PoP\QueriedObject\FieldInterfaces\QueryableFieldInterfaceResolver;
+use PoP\QueriedObject\FieldInterfaceResolvers\QueryableFieldInterfaceResolver;
 
 class CategoryFieldResolver extends AbstractDBDataFieldResolver
 {
