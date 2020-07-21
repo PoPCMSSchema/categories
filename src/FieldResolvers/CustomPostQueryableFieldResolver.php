@@ -10,7 +10,7 @@ use PoP\ComponentModel\Schema\TypeCastingHelpers;
 use PoP\Categories\TypeResolvers\CategoryTypeResolver;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\CustomPosts\FieldInterfaceResolvers\CustomPostFieldInterfaceResolver;
+use PoP\CustomPosts\FieldInterfaceResolvers\IsCustomPostFieldInterfaceResolver;
 use PoP\ComponentModel\FieldResolvers\AbstractQueryableFieldResolver;
 
 class CustomPostQueryableFieldResolver extends AbstractQueryableFieldResolver
@@ -18,7 +18,7 @@ class CustomPostQueryableFieldResolver extends AbstractQueryableFieldResolver
     public static function getClassesToAttachTo(): array
     {
         return [
-            CustomPostFieldInterfaceResolver::class,
+            IsCustomPostFieldInterfaceResolver::class,
         ];
     }
 
