@@ -71,7 +71,7 @@ class CustomPostFieldResolver extends AbstractDBDataFieldResolver
         $post = $resultItem;
         switch ($fieldName) {
             case 'categories':
-                return $categoryapi->getCustomPostCategories($typeResolver->getID($post), ['return-type' => POP_RETURNTYPE_IDS]);
+                return $categoryapi->getCustomPostCategories($typeResolver->getID($post), ['return-type' => \POP_RETURNTYPE_IDS]);
 
             case 'mainCategory':
                 // Simply return the first category

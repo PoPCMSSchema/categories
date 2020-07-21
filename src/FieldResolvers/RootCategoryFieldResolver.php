@@ -76,7 +76,7 @@ class RootCategoryFieldResolver extends AbstractCategoryFieldResolver
                     'include' => [$fieldArgs['id']],
                 ];
                 $options = [
-                    'return-type' => POP_RETURNTYPE_IDS,
+                    'return-type' => \POP_RETURNTYPE_IDS,
                 ];
                 if ($categories = $cmscategoriesapi->getCategories($query, $options)) {
                     return $categories[0];

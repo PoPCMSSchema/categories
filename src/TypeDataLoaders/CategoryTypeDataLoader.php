@@ -51,7 +51,7 @@ class CategoryTypeDataLoader extends AbstractTypeQueryableDataLoader
     {
         // $query['fields'] = 'ids';
         $options = [
-            'return-type' => POP_RETURNTYPE_IDS,
+            'return-type' => \POP_RETURNTYPE_IDS,
         ];
         return (array)$this->executeQuery($query, $options);
     }

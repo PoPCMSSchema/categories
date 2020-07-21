@@ -95,7 +95,7 @@ abstract class AbstractCategoryFieldResolver extends AbstractQueryableFieldResol
                     'limit' => ComponentConfiguration::getCategoryListDefaultLimit(),
                 ];
                 $options = [
-                    'return-type' => POP_RETURNTYPE_IDS,
+                    'return-type' => \POP_RETURNTYPE_IDS,
                 ];
                 $this->addFilterDataloadQueryArgs($options, $typeResolver, $fieldName, $fieldArgs);
                 return $cmscategoriesapi->getCategories($query, $options);

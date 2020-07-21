@@ -104,7 +104,7 @@ class CustomPostQueryableFieldResolver extends AbstractQueryableFieldResolver
                     'limit' => ComponentConfiguration::getCategoryListDefaultLimit(),
                 ];
                 $options = [
-                    'return-type' => POP_RETURNTYPE_IDS,
+                    'return-type' => \POP_RETURNTYPE_IDS,
                 ];
                 $this->addFilterDataloadQueryArgs($options, $typeResolver, $fieldName, $fieldArgs);
                 return $categoryapi->getCustomPostCategories(
