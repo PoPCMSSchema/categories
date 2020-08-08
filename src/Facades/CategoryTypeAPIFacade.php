@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace PoP\Categories\Facades;
+namespace PoPSchema\Categories\Facades;
 
-use PoP\Categories\TypeAPIs\CategoryTypeAPIInterface;
+use PoPSchema\Categories\TypeAPIs\CategoryTypeAPIInterface;
 use PoP\Root\Container\ContainerBuilderFactory;
 
 class CategoryTypeAPIFacade

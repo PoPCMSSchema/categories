@@ -1,5 +1,5 @@
 {
-    "name": "getpop/categories",
+    "name": "pop-schema/categories",
     "type": "library",
     "description": "Adds support for categories",
     "keywords": [
@@ -19,8 +19,8 @@
     "prefer-stable": true,
     "require": {
         "php": "~7.2",
-        "getpop/taxonomies": "dev-master",
-        "getpop/migrate-categories": "dev-master"
+        "pop-schema/taxonomies": "dev-master",
+        "pop-schema/migrate-categories": "dev-master"
     },
     "require-dev": {
         "getpop/api": "dev-master",
@@ -35,12 +35,12 @@
     },
     "autoload": {
         "psr-4": {
-            "PoP\\Categories\\": "src"
+            "PoPSchema\\Categories\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "PoP\\Categories\\": "tests"
+            "PoPSchema\\Categories\\": "tests"
         }
     },
     "scripts": {

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace PoP\Categories\FieldResolvers;
+namespace PoPSchema\Categories\FieldResolvers;
 
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\CustomPosts\FieldResolvers\AbstractCustomPostListFieldResolver;
-use PoP\Categories\TypeResolvers\CategoryTypeResolver;
+use PoPSchema\CustomPosts\FieldResolvers\AbstractCustomPostListFieldResolver;
+use PoPSchema\Categories\TypeResolvers\CategoryTypeResolver;
 
 class CustomPostListCategoryFieldResolver extends AbstractCustomPostListFieldResolver
 {

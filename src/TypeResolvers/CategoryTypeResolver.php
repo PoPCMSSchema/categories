@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace PoP\Categories\TypeResolvers;
+namespace PoPSchema\Categories\TypeResolvers;
 
 use PoP\Translation\Facades\TranslationAPIFacade;
-use PoP\Categories\TypeDataLoaders\CategoryTypeDataLoader;
+use PoPSchema\Categories\TypeDataLoaders\CategoryTypeDataLoader;
 use PoP\ComponentModel\TypeResolvers\AbstractTypeResolver;
 
 class CategoryTypeResolver extends AbstractTypeResolver
@@ -25,7 +25,7 @@ class CategoryTypeResolver extends AbstractTypeResolver
 
     public function getID($resultItem)
     {
-        $cmscategoriesresolver = \PoP\Categories\ObjectPropertyResolverFactory::getInstance();
+        $cmscategoriesresolver = \PoPSchema\Categories\ObjectPropertyResolverFactory::getInstance();
         $category = $resultItem;
         return $cmscategoriesresolver->getCategoryID($category);
     }

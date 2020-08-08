@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace PoP\Categories\FieldResolvers;
+namespace PoPSchema\Categories\FieldResolvers;
 
 use PoP\Engine\TypeResolvers\RootTypeResolver;
-use PoP\Categories\FieldResolvers\AbstractCategoryFieldResolver;
+use PoPSchema\Categories\FieldResolvers\AbstractCategoryFieldResolver;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\Categories\TypeResolvers\CategoryTypeResolver;
+use PoPSchema\Categories\TypeResolvers\CategoryTypeResolver;
 
 class RootCategoryFieldResolver extends AbstractCategoryFieldResolver
 {
@@ -69,7 +69,7 @@ class RootCategoryFieldResolver extends AbstractCategoryFieldResolver
 
     public function resolveValue(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = [], ?array $variables = null, ?array $expressions = null, array $options = [])
     {
-        $cmscategoriesapi = \PoP\Categories\FunctionAPIFactory::getInstance();
+        $cmscategoriesapi = \PoPSchema\Categories\FunctionAPIFactory::getInstance();
         switch ($fieldName) {
             case 'category':
                 $query = [

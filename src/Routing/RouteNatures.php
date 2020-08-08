@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\Categories\Routing;
+namespace PoPSchema\Categories\Routing;
 
 class RouteNatures
 {

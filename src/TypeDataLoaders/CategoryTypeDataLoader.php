@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\Categories\TypeDataLoaders;
+namespace PoPSchema\Categories\TypeDataLoaders;
 
 use PoP\LooseContracts\Facades\NameResolverFacade;
 use PoP\ComponentModel\TypeDataLoaders\AbstractTypeQueryableDataLoader;
@@ -19,7 +19,7 @@ class CategoryTypeDataLoader extends AbstractTypeQueryableDataLoader
         $query = array(
             'include' => $ids
         );
-        $categoryapi = \PoP\Categories\FunctionAPIFactory::getInstance();
+        $categoryapi = \PoPSchema\Categories\FunctionAPIFactory::getInstance();
         return $categoryapi->getCategories($query);
     }
 
@@ -43,7 +43,7 @@ class CategoryTypeDataLoader extends AbstractTypeQueryableDataLoader
 
     public function executeQuery($query, array $options = [])
     {
-        $categoryapi = \PoP\Categories\FunctionAPIFactory::getInstance();
+        $categoryapi = \PoPSchema\Categories\FunctionAPIFactory::getInstance();
         return $categoryapi->getCategories($query, $options);
     }
 

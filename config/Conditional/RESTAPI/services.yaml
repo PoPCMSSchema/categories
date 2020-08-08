@@ -4,6 +4,6 @@ services:
             PoP\Hooks\HooksAPIInterface: '@hooks_api'
             PoP\Translation\TranslationAPIInterface: '@translation_api'
 
-    PoP\Categories\Conditional\RESTAPI\Hooks\:
+    PoPSchema\Categories\Conditional\RESTAPI\Hooks\:
         resource: '../../../src/Conditional/RESTAPI/Hooks/*'
         public: true

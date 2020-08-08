@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace PoP\Categories\Conditional\RESTAPI;
+namespace PoPSchema\Categories\Conditional\RESTAPI;
 
-use PoP\Categories\Component;
+use PoPSchema\Categories\Component;
 use PoP\Root\Component\YAMLServicesTrait;
 use PoP\ComponentModel\Container\ContainerBuilderUtils;
 

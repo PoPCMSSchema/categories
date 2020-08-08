@@ -17,7 +17,7 @@ Adds support for categories
 Via Composer
 
 ``` bash
-composer require getpop/categories
+composer require pop-schema/categories
 ```
 
 ## Usage
@@ -26,7 +26,7 @@ Initialize the component:
 
 ``` php
 \PoP\Root\ComponentLoader::initializeComponents([
-    \PoP\Categories\Component::class,
+    \PoPSchema\Categories\Component::class,
 ]);
 ```
 
@@ -75,17 +75,17 @@ If you discover any security related issues, please email leo@getpop.org instead
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/getpop/categories.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/pop-schema/categories.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/getpop/categories/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/getpop/categories.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/getpop/categories.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/getpop/categories.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/pop-schema/categories/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/pop-schema/categories.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/pop-schema/categories.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/pop-schema/categories.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/getpop/categories
-[link-travis]: https://travis-ci.org/getpop/categories
-[link-scrutinizer]: https://scrutinizer-ci.com/g/getpop/categories/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/getpop/categories
-[link-downloads]: https://packagist.org/packages/getpop/categories
+[link-packagist]: https://packagist.org/packages/pop-schema/categories
+[link-travis]: https://travis-ci.org/pop-schema/categories
+[link-scrutinizer]: https://scrutinizer-ci.com/g/pop-schema/categories/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/pop-schema/categories
+[link-downloads]: https://packagist.org/packages/pop-schema/categories
 [link-author]: https://github.com/leoloso
 [link-contributors]: ../../contributors

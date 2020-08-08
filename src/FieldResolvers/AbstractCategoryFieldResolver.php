@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace PoP\Categories\FieldResolvers;
+namespace PoPSchema\Categories\FieldResolvers;
 
-use PoP\Categories\ComponentConfiguration;
+use PoPSchema\Categories\ComponentConfiguration;
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\ComponentModel\Schema\TypeCastingHelpers;
-use PoP\Categories\TypeResolvers\CategoryTypeResolver;
+use PoPSchema\Categories\TypeResolvers\CategoryTypeResolver;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\AbstractQueryableFieldResolver;
@@ -88,7 +88,7 @@ abstract class AbstractCategoryFieldResolver extends AbstractQueryableFieldResol
 
     public function resolveValue(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = [], ?array $variables = null, ?array $expressions = null, array $options = [])
     {
-        $cmscategoriesapi = \PoP\Categories\FunctionAPIFactory::getInstance();
+        $cmscategoriesapi = \PoPSchema\Categories\FunctionAPIFactory::getInstance();
         switch ($fieldName) {
             case 'categories':
                 $query = [

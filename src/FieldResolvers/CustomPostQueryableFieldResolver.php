@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace PoP\Categories\FieldResolvers;
+namespace PoPSchema\Categories\FieldResolvers;
 
-use PoP\Categories\ComponentConfiguration;
+use PoPSchema\Categories\ComponentConfiguration;
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\ComponentModel\Schema\TypeCastingHelpers;
-use PoP\Categories\TypeResolvers\CategoryTypeResolver;
+use PoPSchema\Categories\TypeResolvers\CategoryTypeResolver;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\CustomPosts\FieldInterfaceResolvers\IsCustomPostFieldInterfaceResolver;
+use PoPSchema\CustomPosts\FieldInterfaceResolvers\IsCustomPostFieldInterfaceResolver;
 use PoP\ComponentModel\FieldResolvers\AbstractQueryableFieldResolver;
 
 class CustomPostQueryableFieldResolver extends AbstractQueryableFieldResolver
@@ -96,7 +96,7 @@ class CustomPostQueryableFieldResolver extends AbstractQueryableFieldResolver
 
     public function resolveValue(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = [], ?array $variables = null, ?array $expressions = null, array $options = [])
     {
-        $categoryapi = \PoP\Categories\FunctionAPIFactory::getInstance();
+        $categoryapi = \PoPSchema\Categories\FunctionAPIFactory::getInstance();
         $post = $resultItem;
         switch ($fieldName) {
             case 'categories':
