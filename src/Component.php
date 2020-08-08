@@ -41,7 +41,7 @@ class Component extends AbstractComponent
     public static function getDependedMigrationPlugins(): array
     {
         return [
-            'migrate-categories',
+            'pop-schema/migrate-categories',
         ];
     }
 
