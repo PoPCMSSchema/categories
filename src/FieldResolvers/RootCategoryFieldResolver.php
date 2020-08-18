@@ -10,6 +10,7 @@ use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoPSchema\Categories\TypeResolvers\CategoryTypeResolver;
+use PoPSchema\SchemaCommons\DataLoading\ReturnTypes;
 
 class RootCategoryFieldResolver extends AbstractCategoryFieldResolver
 {
@@ -76,7 +77,7 @@ class RootCategoryFieldResolver extends AbstractCategoryFieldResolver
                     'include' => [$fieldArgs['id']],
                 ];
                 $options = [
-                    'return-type' => \POP_RETURNTYPE_IDS,
+                    'return-type' => ReturnTypes::IDS,
                 ];
                 if ($categories = $cmscategoriesapi->getCategories($query, $options)) {
                     return $categories[0];

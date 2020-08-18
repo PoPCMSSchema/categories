@@ -6,6 +6,7 @@ namespace PoPSchema\Categories\TypeDataLoaders;
 
 use PoP\LooseContracts\Facades\NameResolverFacade;
 use PoP\ComponentModel\TypeDataLoaders\AbstractTypeQueryableDataLoader;
+use PoPSchema\SchemaCommons\DataLoading\ReturnTypes;
 
 class CategoryTypeDataLoader extends AbstractTypeQueryableDataLoader
 {
@@ -51,7 +52,7 @@ class CategoryTypeDataLoader extends AbstractTypeQueryableDataLoader
     {
         // $query['fields'] = 'ids';
         $options = [
-            'return-type' => \POP_RETURNTYPE_IDS,
+            'return-type' => ReturnTypes::IDS,
         ];
         return (array)$this->executeQuery($query, $options);
     }

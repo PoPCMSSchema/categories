@@ -12,6 +12,7 @@ use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoPSchema\CustomPosts\FieldInterfaceResolvers\IsCustomPostFieldInterfaceResolver;
 use PoP\ComponentModel\FieldResolvers\AbstractQueryableFieldResolver;
+use PoPSchema\SchemaCommons\DataLoading\ReturnTypes;
 
 class CustomPostQueryableFieldResolver extends AbstractQueryableFieldResolver
 {
@@ -104,7 +105,7 @@ class CustomPostQueryableFieldResolver extends AbstractQueryableFieldResolver
                     'limit' => ComponentConfiguration::getCategoryListDefaultLimit(),
                 ];
                 $options = [
-                    'return-type' => \POP_RETURNTYPE_IDS,
+                    'return-type' => ReturnTypes::IDS,
                 ];
                 $this->addFilterDataloadQueryArgs($options, $typeResolver, $fieldName, $fieldArgs);
                 return $categoryapi->getCustomPostCategories(

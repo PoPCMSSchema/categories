@@ -11,6 +11,7 @@ use PoPSchema\Categories\TypeResolvers\CategoryTypeResolver;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\AbstractQueryableFieldResolver;
+use PoPSchema\SchemaCommons\DataLoading\ReturnTypes;
 
 abstract class AbstractCategoryFieldResolver extends AbstractQueryableFieldResolver
 {
@@ -95,7 +96,7 @@ abstract class AbstractCategoryFieldResolver extends AbstractQueryableFieldResol
                     'limit' => ComponentConfiguration::getCategoryListDefaultLimit(),
                 ];
                 $options = [
-                    'return-type' => \POP_RETURNTYPE_IDS,
+                    'return-type' => ReturnTypes::IDS,
                 ];
                 $this->addFilterDataloadQueryArgs($options, $typeResolver, $fieldName, $fieldArgs);
                 return $cmscategoriesapi->getCategories($query, $options);

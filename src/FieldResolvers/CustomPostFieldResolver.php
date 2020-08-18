@@ -10,6 +10,7 @@ use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
 use PoPSchema\CustomPosts\FieldInterfaceResolvers\IsCustomPostFieldInterfaceResolver;
+use PoPSchema\SchemaCommons\DataLoading\ReturnTypes;
 
 class CustomPostFieldResolver extends AbstractDBDataFieldResolver
 {
@@ -71,7 +72,7 @@ class CustomPostFieldResolver extends AbstractDBDataFieldResolver
         $post = $resultItem;
         switch ($fieldName) {
             case 'categories':
-                return $categoryapi->getCustomPostCategories($typeResolver->getID($post), ['return-type' => \POP_RETURNTYPE_IDS]);
+                return $categoryapi->getCustomPostCategories($typeResolver->getID($post), ['return-type' => ReturnTypes::IDS]);
 
             case 'mainCategory':
                 // Simply return the first category
@@ -87,7 +88,7 @@ class CustomPostFieldResolver extends AbstractDBDataFieldResolver
                 return null;
 
             case 'catSlugs':
-                return $categoryapi->getCustomPostCategories($typeResolver->getID($post), ['return-type' => POP_RETURNTYPE_SLUGS]);
+                return $categoryapi->getCustomPostCategories($typeResolver->getID($post), ['return-type' => ReturnTypes::SLUGS]);
         }
 
         return parent::resolveValue($typeResolver, $resultItem, $fieldName, $fieldArgs, $variables, $expressions, $options);
