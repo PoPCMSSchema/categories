@@ -11,6 +11,10 @@ class CategoryTypeAPIFacade
 {
     public static function getInstance(): CategoryTypeAPIInterface
     {
-        return ContainerBuilderFactory::getInstance()->get('category_type_api');
+        /**
+         * @var CategoryTypeAPIInterface
+         */
+        $service = ContainerBuilderFactory::getInstance()->get('category_type_api');
+        return $service;
     }
 }
