@@ -14,7 +14,7 @@ class CategoryTypeAPIFacade
         /**
          * @var CategoryTypeAPIInterface
          */
-        $service = ContainerBuilderFactory::getInstance()->get('category_type_api');
+        $service = ContainerBuilderFactory::getInstance()->get(CategoryTypeAPIInterface::class);
         return $service;
     }
 }
