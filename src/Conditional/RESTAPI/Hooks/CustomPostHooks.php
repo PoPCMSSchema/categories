@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PoPSchema\Categories\Conditional\RESTAPI\Hooks;
 
-use PoP\Engine\Hooks\AbstractHookSet;
+use PoP\Hooks\AbstractHookSet;
 use PoPSchema\CustomPosts\Conditional\RESTAPI\RouteModuleProcessorHelpers\EntryRouteModuleProcessorHelpers;
 
 class CustomPostHooks extends AbstractHookSet
