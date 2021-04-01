@@ -4,13 +4,16 @@ declare(strict_types=1);
 
 namespace PoPSchema\Categories\TypeDataLoaders;
 
+use PoPSchema\Categories\ComponentContracts\CategoryAPIRequestedContractTrait;
 use PoP\LooseContracts\Facades\NameResolverFacade;
 use PoP\ComponentModel\TypeDataLoaders\AbstractTypeQueryableDataLoader;
 use PoPSchema\SchemaCommons\DataLoading\ReturnTypes;
 use PoPSchema\Categories\ModuleProcessors\FieldDataloadModuleProcessor;
 
-class CategoryTypeDataLoader extends AbstractTypeQueryableDataLoader
+abstract class AbstractCategoryTypeDataLoader extends AbstractTypeQueryableDataLoader
 {
+    use CategoryAPIRequestedContractTrait;
+
     public function getFilterDataloadingModule(): ?array
     {
         return [FieldDataloadModuleProcessor::class, FieldDataloadModuleProcessor::MODULE_DATALOAD_RELATIONALFIELDS_CATEGORYLIST];
@@ -21,7 +24,7 @@ class CategoryTypeDataLoader extends AbstractTypeQueryableDataLoader
         $query = array(
             'include' => $ids
         );
-        $categoryapi = \PoPSchema\Categories\FunctionAPIFactory::getInstance();
+        $categoryapi = $this->getTypeAPI();
         return $categoryapi->getCategories($query);
     }
 
@@ -45,7 +48,7 @@ class CategoryTypeDataLoader extends AbstractTypeQueryableDataLoader
 
     public function executeQuery($query, array $options = [])
     {
-        $categoryapi = \PoPSchema\Categories\FunctionAPIFactory::getInstance();
+        $categoryapi = $this->getTypeAPI();
         return $categoryapi->getCategories($query, $options);
     }
 
