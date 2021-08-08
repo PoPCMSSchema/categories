@@ -8,7 +8,7 @@ use PoP\ComponentModel\ModuleProcessors\AbstractFilterDataModuleProcessor;
 use PoPSchema\SchemaCommons\ModuleProcessors\FormInputs\CommonFilterInputModuleProcessor;
 use PoPSchema\Taxonomies\ModuleProcessors\FormInputs\FilterInputModuleProcessor;
 
-class FilterInnerModuleProcessor extends AbstractFilterDataModuleProcessor
+class FilterInputContainerModuleProcessor extends AbstractFilterDataModuleProcessor
 {
     public const MODULE_FILTERINNER_CATEGORIES = 'filterinner-categories';
     public const MODULE_FILTERINNER_CATEGORYCOUNT = 'filterinner-categorycount';
@@ -44,7 +44,7 @@ class FilterInnerModuleProcessor extends AbstractFilterDataModuleProcessor
         ];
         if (
             $modules = $this->hooksAPI->applyFilters(
-                'Categories:FilterInnerModuleProcessor:inputmodules',
+                'Categories:FilterInputContainerModuleProcessor:inputmodules',
                 $inputmodules[$module[1]],
                 $module
             )
