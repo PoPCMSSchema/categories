@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace PoPSchema\Categories\TypeDataLoaders;
+namespace PoPSchema\Categories\RelationalTypeDataLoaders\Object;
 
 use PoPSchema\Categories\ComponentContracts\CategoryAPIRequestedContractTrait;
-use PoP\ComponentModel\TypeDataLoaders\AbstractTypeQueryableDataLoader;
+use PoP\ComponentModel\RelationalTypeDataLoaders\Object\AbstractObjectTypeQueryableDataLoader;
 use PoPSchema\SchemaCommons\DataLoading\ReturnTypes;
 use PoPSchema\SchemaCommons\Constants\QueryOptions;
 
-abstract class AbstractCategoryTypeDataLoader extends AbstractTypeQueryableDataLoader
+abstract class AbstractCategoryTypeDataLoader extends AbstractObjectTypeQueryableDataLoader
 {
     use CategoryAPIRequestedContractTrait;
 
