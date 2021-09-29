@@ -5,20 +5,20 @@ declare(strict_types=1);
 namespace PoPSchema\Categories\FieldResolvers\ObjectType;
 
 use PoP\ComponentModel\TypeResolvers\ObjectType\ObjectTypeResolverInterface;
-use PoPSchema\CustomPosts\FieldResolvers\ObjectType\AbstractCustomPostListObjectTypeFieldResolver;
 use PoPSchema\Categories\ComponentContracts\CategoryAPIRequestedContractInterface;
+use PoPSchema\CustomPosts\FieldResolvers\ObjectType\AbstractCustomPostListObjectTypeFieldResolver;
 
 abstract class AbstractCustomPostListCategoryObjectTypeFieldResolver extends AbstractCustomPostListObjectTypeFieldResolver implements CategoryAPIRequestedContractInterface
 {
     public function getSchemaFieldDescription(ObjectTypeResolverInterface $objectTypeResolver, string $fieldName): ?string
     {
-        $descriptions = [
+        return match ($fieldName) {
             'customPosts' => $this->translationAPI->__('Custom posts which contain this category', 'pop-categories'),
             'customPostCount' => $this->translationAPI->__('Number of custom posts which contain this category', 'pop-categories'),
             'customPostsForAdmin' => $this->translationAPI->__('[Unrestricted] Custom posts which contain this category', 'pop-categories'),
             'customPostCountForAdmin' => $this->translationAPI->__('[Unrestricted] Number of custom posts which contain this category', 'pop-categories'),
-        ];
-        return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($objectTypeResolver, $fieldName);
+            default => parent::getSchemaFieldDescription($objectTypeResolver, $fieldName),
+        };
     }
 
     abstract protected function getQueryProperty(): string;
