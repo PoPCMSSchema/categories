@@ -18,9 +18,13 @@ class AppStateProvider extends AbstractAppStateProvider
     }
     final protected function getTaxonomyTypeAPI(): TaxonomyTypeAPIInterface
     {
+        /** @var TaxonomyTypeAPIInterface */
         return $this->taxonomyTypeAPI ??= $this->instanceManager->getInstance(TaxonomyTypeAPIInterface::class);
     }
 
+    /**
+     * @param array<string,mixed> $state
+     */
     public function augment(array &$state): void
     {
         $nature = $state['nature'];
